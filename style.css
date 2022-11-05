@@ -62,7 +62,7 @@ body {
 .angle_disp {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     border-radius: 3rem;
-    width: calc(100vw - 6rem);
+    width: 90vw;
     height: 50rem;
     font-size: 20rem;
     text-align: center;
