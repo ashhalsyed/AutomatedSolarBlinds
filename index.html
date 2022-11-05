@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>solar blinds</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Orbitron"
+      href="https://fonts.googleapis.com/css?family=Quicksand"
+    />
+  </head>
+  <body onload="setTheme()">
+    <div class="navbar">
+      <img
+        onclick="openNav()"
+        class="sidebar_logo"
+        src="media/sidebar.svg"
+        alt="sidebar icon"
+      />
+    </div>
+    <div></div>
+    <form class="manual_mode">
+      <div class="angle">
+        <h1 class="angle_title">Shutter Angle</h1>
+        <input
+          class="angle_disp"
+          id="amount"
+          type="text"
+          value="0°"
+          min="0"
+          max="90"
+        />
+        <input
+          class="slider"
+          id="rangeInput"
+          type="range"
+          value="0"
+          min="0"
+          max="90"
+          oninput="updateSliderAndDisplay()"
+        />
+      </div>
+    </form>
+    <div class="toggle_on_off">
+      <button class="off_btn" id="off_btn" onclick="closed()">
+        <p class="btn_text">Close</p>
+        <img class="closed" src="media/closed2.svg" alt="close icon" />
+      </button>
+      <button class="on_btn" id="on_btn" onclick="opened()">
+        <p class="btn_text">Open</p>
+        <img class="open" src="media/open.svg" alt="open icon" />
+      </button>
+    </div>
+    <div id="mySidenav" class="sidenav">
+      <img
+        onclick="closeNav()"
+        class="close_logo"
+        src="media/close.svg"
+        alt="close icon"
+      />
+      <a href="index.html">Home</a>
+      <section>
+        <div class="divider"></div>
+      </section>
+      <a href="aboutus.html">About Us</a>
+      <section>
+        <div class="divider"></div>
+      </section>
+      <a href="faq.html">FAQ</a>
+      <section>
+        <div class="divider"></div>
+      </section>
+      <a href="settings.html">Settings</a>
+      <section>
+        <div class="divider"></div>
+      </section>
+      <img class="logo" src="media/logo.svg" alt="logo" />
+    </div>
+  </body>
+</html>

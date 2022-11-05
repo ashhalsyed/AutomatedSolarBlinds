@@ -1,0 +1,259 @@
+body {
+    margin: 0;
+    font-size: 5rem;
+    /* transition: background-color 0.2s ease-out; */
+}
+
+
+.navbar {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background-color: #D5E7F2;
+    display: flex;
+    padding: 3rem;
+}
+.sidebar_logo {
+    width: 6rem;
+}
+
+.angle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 90vw;
+    height: 4rem;
+    border-radius: 3rem;
+    background: #D5E7F2;
+    outline: none;
+    opacity: 1;
+    /* -webkit-transition: .2s;
+    transition: opacity .2s; */
+    margin: 5rem 0 0 0;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+
+.slider::-webkit-slider-thumb {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    -webkit-appearance: none;
+    appearance: none;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    background: #032CA6;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    background: #032CA6;
+    cursor: pointer;
+  }
+
+.angle_disp {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    border-radius: 3rem;
+    width: calc(100vw - 6rem);
+    height: 50rem;
+    font-size: 20rem;
+    text-align: center;
+    border: none;
+    pointer-events: none;
+    background-color: #D5E7F2;
+    font-family: "Orbitron", sans-serif;
+    margin: 3rem 0 0 0;
+    color: #032CA6;
+}
+
+
+.sidenav {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    font-size: 3rem;
+    font-family: "Orbitron", sans-serif;
+    height: 100vh;
+    width: 0; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    left: 0;
+    background-color: #D5E7F2;
+    overflow-x: hidden; 
+    transition: 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidenav a {
+    padding: 3rem 0 3rem 5rem;
+    text-decoration: none;
+    color: #032CA6;
+    display: block;
+    transition: 0.1s;
+
+  }
+  
+
+  .sidenav .closebtn {
+
+    font-size: 8rem;
+
+    align-self: flex-end;
+
+  }
+  
+  .close_logo {
+    width: 4rem;
+    padding: 3rem;
+    margin: 0 0 3rem 0 ;
+  }
+
+  .logo {
+    width: 12rem;
+    margin: 38rem 0 3rem 3rem;
+}
+
+.toggle_on_off {
+    display: flex;
+    margin: 5rem 0 0 0;
+    padding: 0 4rem;
+    justify-content: space-between;
+}
+
+
+.off_btn {
+    background-color: #D5E7F2;
+    width: 25rem;
+    height: 10rem;
+    font-size: 3rem;
+    font-family: "Orbitron", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+    /* margin: 0 0 0 4rem; */
+    border: none;
+}
+
+.on_btn {
+    background-color: #D5E7F2;
+    width: 25rem;
+    height: 10rem;
+    font-size: 3rem;
+    font-family: "Orbitron", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+    /* margin: 0 4rem 0 0; */
+    border: none;
+}
+
+.open {
+    width: 4rem;
+}
+
+.closed {
+    width: 4rem;
+}
+.btn_text {
+    margin: 0 2rem 0 0;
+}
+
+.divider {
+    width: 60vw;
+    height: 0.1rem;
+    background: #95ACBF;
+    margin: 0 0 0 3rem;
+  }
+
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+
+  .settings {
+    display: flex;
+    justify-content: center;
+  }
+
+  .theme {
+    display: flex;
+    background-color: #D5E7F2;
+    width: 90vw;
+    height: 8rem;
+    border-radius: 2rem;
+    margin: 3rem 0 0 0;
+    align-items: center;
+    
+  }
+
+  .theme_tag {
+    font-size: 3rem;
+    font-family: "Orbitron", sans-serif;
+    margin: 0 0 0 3rem;
+    color: #032CA6;
+}
+
+.toggle_holder {
+    background-color: #95ACBF;
+    width: 8rem;
+    height: 4rem;
+    margin: 0 3rem 0 auto;
+    border-radius: 3rem;
+    display: flex;
+    justify-content: start;
+
+
+}
+
+.toggle_circle {
+    background-color: white;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0.25rem;
+    border-radius: 3rem;
+    border: none;
+
+}
+
+.other_pages {
+    background-color: #D5E7F2;
+    width: 90vw;
+    font-size: 3rem;
+    font-family: "Orbitron", sans-serif;
+    color: #032CA6;
+    margin: 3rem auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 2rem;
+}
+
+.page_title {
+    margin: 3rem 0 3rem 3rem;
+}
+
+.page_content {
+    margin: 0 0 50rem 3rem;
+}
+
+.angle_title {
+    margin: 0;
+    position: absolute;
+    top: 16rem;
+    left: 5rem;
+    font-size: 3rem;
+    color: #032CA6;
+    font-family: "Orbitron", sans-serif;
+}
