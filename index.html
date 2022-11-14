@@ -19,10 +19,9 @@
         alt="sidebar icon"
       />
     </div>
-    <div></div>
     <form class="manual_mode">
       <div class="angle">
-        <h1 class="angle_title">Shutter Angle</h1>
+        <h1 class="angle_title">Current Angle</h1>
         <input
           class="angle_disp"
           id="amount"
@@ -31,16 +30,16 @@
           min="0"
           max="90"
         />
-        <input
-          class="slider"
-          id="rangeInput"
-          type="range"
-          value="0"
-          min="0"
-          max="90"
-          oninput="updateSliderAndDisplay()"
-        />
       </div>
+      <input
+        class="slider"
+        id="rangeInput"
+        type="range"
+        value="0"
+        min="0"
+        max="90"
+        oninput="updateSliderAndDisplay()"
+      />
     </form>
     <div class="toggle_on_off">
       <button class="off_btn" id="off_btn" onclick="closed()">
@@ -63,11 +62,7 @@
       <section>
         <div class="divider"></div>
       </section>
-      <a href="aboutus.html">About Us</a>
-      <section>
-        <div class="divider"></div>
-      </section>
-      <a href="faq.html">FAQ</a>
+      <a href="anglechecker.html">Angle Checker</a>
       <section>
         <div class="divider"></div>
       </section>

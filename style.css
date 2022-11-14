@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-size: 5rem;
@@ -20,19 +24,29 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #D5E7F2;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    width: 50rem;
+    height: 45rem;
+    border-radius: 2rem;
+    margin: 3rem 0 0 0;
+    justify-content: flex-start;
+
 }
 
 .slider {
     -webkit-appearance: none;
     width: 90vw;
-    height: 4rem;
+    max-width: 50rem;
+    /* height: 4rem; */
+    height: 3rem;
     border-radius: 3rem;
     background: #D5E7F2;
     outline: none;
     opacity: 1;
     /* -webkit-transition: .2s;
     transition: opacity .2s; */
-    margin: 5rem 0 0 0;
+    margin: 20rem 0 0 0;
   }
   
   .slider:hover {
@@ -43,8 +57,8 @@ body {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     -webkit-appearance: none;
     appearance: none;
-    width: 6rem;
-    height: 6rem;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
     background: #032CA6;
     cursor: pointer;
@@ -52,27 +66,30 @@ body {
   
   .slider::-moz-range-thumb {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    width: 6rem;
-    height: 6rem;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
     background: #032CA6;
     cursor: pointer;
   }
 
 .angle_disp {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); */
     border-radius: 3rem;
-    width: calc(100vw - 6rem);
+    /* width: calc(100vw - 6rem); */
     /* Removed calc() */
-    height: 50rem;
+    /* test */
+    /* height: 40rem; */
     font-size: 20rem;
     text-align: center;
     border: none;
     pointer-events: none;
     background-color: #D5E7F2;
     font-family: "Orbitron", sans-serif;
-    margin: 3rem 0 0 0;
+    /* margin: 3rem 0 0 0; */
     color: #032CA6;
+    max-width: 50rem;
+    margin: auto;
 }
 
 
@@ -142,9 +159,10 @@ body {
     border-radius: 2rem;
     /* margin: 0 0 0 4rem; */
     border: none;
-}
-
-.on_btn {
+    color: #032CA6;
+  }
+  
+  .on_btn {
     background-color: #D5E7F2;
     width: 25rem;
     height: 10rem;
@@ -156,6 +174,7 @@ body {
     border-radius: 2rem;
     /* margin: 0 4rem 0 0; */
     border: none;
+    color: #032CA6;
 }
 
 .open {
@@ -229,7 +248,7 @@ body {
 
 }
 
-.other_pages {
+/* .other_pages {
     background-color: #D5E7F2;
     width: 90vw;
     font-size: 3rem;
@@ -239,7 +258,7 @@ body {
     display: flex;
     flex-direction: column;
     border-radius: 2rem;
-}
+} */
 
 .page_title {
     margin: 3rem 0 3rem 3rem;
@@ -250,11 +269,176 @@ body {
 }
 
 .angle_title {
-    margin: 0;
-    position: absolute;
-    top: 16rem;
-    left: 5rem;
     font-size: 3rem;
     color: #032CA6;
     font-family: "Orbitron", sans-serif;
+    position: absolute;
+    align-self: flex-start;
+    margin: 2rem 0 0 2rem;
+
+}
+
+.manual_mode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.anglechecker_page {
+display: flex;
+flex-direction: column;
+}
+
+
+.update_button {
+  background-color: #032CA6;
+  color: white;
+  width: 25rem;
+  height: 10rem;
+  font-size: 3rem;
+  font-family: "Orbitron", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  /* margin: 0 0 0 4rem; */
+  margin: 3rem auto;
+  border: none;
+}
+
+.angle_checker_title {
+  font-size: 3rem;
+  color: #032CA6;
+  font-family: "Orbitron", sans-serif;
+  margin: 20rem 0 0 3rem;
+}
+
+.coordinate_label {
+  font-size: 2rem;
+  color: #032CA6;
+  font-family: "Orbitron", sans-serif;
+  margin: 3rem 0 0 3rem;
+}
+
+.season_select {
+  width: 50rem;
+  height: 10rem;
+  font-size: 3rem;
+  font-family: "Orbitron", sans-serif;
+  /* margin: 3rem 0 0 3rem; */
+  margin: 3rem 0 0 0;
+  background-color: #D5E7F2;
+  color: #032CA6;
+  align-self: center;
+  /* border-radius: 2rem; */
+  appearance: none;
+  padding: 0 0 0 2rem;
+  
+}
+
+.season_optgroup {
+  font-size: 1rem;
+  padding: 0;
+  /* margin: 0; */
+  /* width: 30rem;  */
+}
+
+/* .season_label {
+  font-size: 3rem;
+  color: #032CA6;
+  font-family: "Orbitron", sans-serif;
+  margin: 3rem 0 0 3rem;
+} */
+
+/* .optimal_angle_label {
+  font-size: 3rem;
+  color: #032CA6;
+  font-family: "Orbitron", sans-serif;
+  margin: 3rem 0 0 3rem;
+} */
+
+.optimal_angle_result_label {
+  font-size: 3rem;
+  color: #032CA6;
+  font-family: "Orbitron", sans-serif;
+  margin: 2rem 0 0 2rem;
+  position: absolute;
+}
+
+.optimal_angle_button {
+  background-color: #032CA6;
+  color: white;
+  width: 50rem;
+  height: 10rem;
+  font-size: 3rem;
+  font-family: "Orbitron", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  /* margin: 0 0 0 4rem; */
+  margin: 3rem auto;
+  border: none;
+}
+
+.blank_option{
+	display: none;
+}
+
+.optimal_angle_result {
+  font-size: 15rem;
+  color: #032CA6;
+  font-family: "Orbitron", sans-serif;
+  margin: auto auto 3rem auto;
+  align-self: center;
+}
+
+.optimal_angle {
+  margin: 3rem auto 0 auto;
+  background-color: #D5E7F2;
+  display: flex;
+  border-radius: 2rem;
+  width: 50rem;
+  height: 30rem;
+  flex-direction: column;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.show_calculation {
+  display: none;
+  flex-direction: column;
+  background-color: #D5E7F2;
+  margin: 0 auto 3rem auto;
+  width: 50rem;
+  border-radius: 0 0 2rem 2rem;
+}
+
+.show_calculation_button {
+  background-color: #032CA6;
+  color: white;
+  width: 50rem;
+  height: 10rem;
+  font-size: 3rem;
+  font-family: "Orbitron", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem 2rem 0 0;
+  /* margin: 0 0 0 4rem; */
+  margin: 3rem auto 0 auto;
+  border: none;
+}
+
+.angle_explanation {
+  font-size: 2rem;
+  color: #032CA6;
+  font-family: "Orbitron", sans-serif;
+  margin: 3rem 3rem 0 3rem;
+}
+
+.angle_source {
+  color: blue;
+  font-size: 2rem;
+  font-family: "Orbitron", sans-serif;
+  padding: 3rem 0 3rem 3rem;
 }
