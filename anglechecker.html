@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>solar blinds</title>
+    <title>Automated Solar Blinds</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
     <link
@@ -21,15 +21,11 @@
     </div>
     <div class="anglechecker_page">
       <div class="optimal_angle">
-        <h2 class="optimal_angle_result_label">Optimal Angle</h2>
+        <h2 class="optimal_angle_result_label">Charging Angle</h2>
         <p id="optimal_angle_result_label" class="optimal_angle_result">?°</p>
       </div>
-      <!-- <h1 class="angle_checker_title">Angle Checker</h1>
-      <button class="update_button" onclick="getLocation()">
-        Get location
-      </button> -->
-<!--       <h1 class="angle_checker_title">Select your season</h1> -->
-      <select
+      <!-- <h1 class="angle_checker_title">Select your season</h1> -->
+      <!-- <select
         class="season_select"
         name="seasons"
         id="seasons"
@@ -42,14 +38,21 @@
           <option value="Fall">Fall</option>
           <option value="Winter">Winter</option>
         </optgroup>
-      </select>
+      </select> -->
       <!-- <h2 id="season_label" class="season_label">Season: Spring</h2> -->
       <!-- <h2 id="optimal_angle_label" class="optimal_angle_label">
         Optimal Angle
       </h2> -->
-      <!-- <button class="optimal_angle_button" onclick="calculateAngle()">
-        Calculate Optimal Angle
-      </button> -->
+      <button class="optimal_angle_button" onclick="updateAngle()">
+        Update Angle
+        <img
+          class="update"
+          id="update"
+          src="media/update.svg"
+          alt="update icon"
+        />
+      </button>
+
       <button
         class="show_calculation_button"
         id="show_calculation_button"
@@ -58,10 +61,25 @@
         How is this calculated ?
       </button>
       <div class="show_calculation" id="show_calculation">
-        <p id="latitude" class="coordinate_label">
-          Your <span style="color: #ff0000">Latitude:</span>
+        <!-- <p id="latitude" class="coordinate_label">
+          Your <span style="color: #ff0000">Latitude</span>: ?
+        </p> -->
+        <p class="calculation_info_label">Date Used:</p>
+        <p class="calculation_info_user_date" id="calculation_info_user_date">
+          ?
         </p>
-        <p class="angle_explanation">
+        <p class="calculation_info_label">Latitude Used:</p>
+        <p
+          class="calculation_info_user_location"
+          id="calculation_info_user_location"
+        >
+          ?
+        </p>
+        <p class="calculation_info" id="calculation_info">
+          We use the current date and location to calculate your optimal
+          charging angle.
+        </p>
+        <!-- <p class="angle_explanation">
           <strong>Spring :</strong><br />
           Angle = (<span style="color: #ff0000">lattitude</span>) - 2.5<br /><br />
           <strong>Summer :</strong><br />
@@ -70,15 +88,16 @@
           Angle = (<span style="color: #ff0000">lattitude</span>) - 2.5<br /><br />
           <strong>Winter :</strong><br />
           Angle = (<span style="color: #ff0000">lattitude</span>) * 0.9 - 23.5
-        </p>
+        </p> -->
         <a
           href="https://sinovoltaics.com/learning-center/system-design/solar-panel-angle-tilt-calculation/#:~:text=This%20is%20an%20improvement%20of%20the%20general%20method%20that%20gives%20better%20results.%20In%20this%20method%2C%20the%20optimum%20tilt%20angle%20for%20solar%20panels%20during%20winter%20is%20calculated%20by%20multiplying%20the%20latitude%20by%200.9%20and%20then%20adding%2029%C2%B0.%20In%20the%20above%20case%20example%20of%20a%20latitude%20of%2034%C2%B0%2C%20the%20tilt%20angle%20will%20be%20(34%20*%200.9)%20%2B%2029%20%3D%2059.6%C2%B0.%20This%20angle%20is%2010%C2%B0%20steeper%20than%20in%20the%20general%20method%20but%20very%20effective%20at%20tapping%20the%20midday%20sun%20which%20is%20the%20hottest%20in%20the%20short%20winter%20days.%20For%20summer%2C%20the%20tilt%20angle%20is%20calculated%20by%20multiplying%20the%20latitude%20by%200.9%20and%20subtracting%2023.5%C2%B0.%20In%20the%20above%20case%20example%2C%20this%20angle%20would%20be%20(34%20*%200.9)%20%E2%80%93%2023.5%20%3D%207.1%C2%B0.%20For%20optimum%20tilt%20angles%20during%20spring%20and%20fall%2C%202.5%C2%B0%20is%20subtracted%20from%20the%20latitude."
           class="angle_source"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Source: Sino Voltaics:</a
-        >
+          Learn More
+          <img class="open_tab" src="media/new_tab.svg" alt="new tab icon" />
+        </a>
       </div>
     </div>
     <div id="mySidenav" class="sidenav">
@@ -92,7 +111,7 @@
       <section>
         <div class="divider"></div>
       </section>
-      <a href="anglechecker.html">Angle Checker</a>
+      <a href="anglechecker.html">Charging Mode</a>
       <section>
         <div class="divider"></div>
       </section>
@@ -100,7 +119,7 @@
       <section>
         <div class="divider"></div>
       </section>
-      <img class="logo" src="media/logo.svg" alt="logo" />
+      <!-- <img class="logo" src="media/logo.svg" alt="logo" /> -->
     </div>
   </body>
 </html>

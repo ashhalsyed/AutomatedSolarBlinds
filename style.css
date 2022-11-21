@@ -1,10 +1,12 @@
-html {
-  scroll-behavior: smooth;
+* {  
+letter-spacing: 0.5rem;
+scroll-behavior: smooth;
+touch-action: manipulation;
 }
 
 body {
     margin: 0;
-    font-size: 5rem;
+    /* font-size: 5rem; */
     /* transition: background-color 0.2s ease-out; */
 }
 
@@ -90,6 +92,7 @@ body {
     color: #032CA6;
     max-width: 50rem;
     margin: auto;
+    padding: 0;
 }
 
 
@@ -108,6 +111,7 @@ body {
     transition: 0.2s;
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
   }
   
   .sidenav a {
@@ -378,8 +382,10 @@ flex-direction: column;
   justify-content: center;
   border-radius: 2rem;
   /* margin: 0 0 0 4rem; */
-  margin: 3rem auto;
+  margin: 20rem auto 3rem auto;
   border: none;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
 }
 
 .blank_option{
@@ -387,11 +393,13 @@ flex-direction: column;
 }
 
 .optimal_angle_result {
-  font-size: 15rem;
+  font-size: 20rem;
   color: #032CA6;
   font-family: "Orbitron", sans-serif;
-  margin: auto auto 3rem auto;
+  /* margin: auto auto 3rem auto; */
+  margin: auto;
   align-self: center;
+  display: flex;
 }
 
 .optimal_angle {
@@ -400,7 +408,7 @@ flex-direction: column;
   display: flex;
   border-radius: 2rem;
   width: 50rem;
-  height: 30rem;
+  height: 45rem;
   flex-direction: column;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
@@ -412,13 +420,14 @@ flex-direction: column;
   margin: 0 auto 3rem auto;
   width: 50rem;
   border-radius: 0 0 2rem 2rem;
+  /* font-size: 1.75rem; */
 }
 
 .show_calculation_button {
   background-color: #032CA6;
   color: white;
   width: 50rem;
-  height: 10rem;
+  height: 13rem;
   font-size: 3rem;
   font-family: "Orbitron", sans-serif;
   display: flex;
@@ -426,8 +435,10 @@ flex-direction: column;
   justify-content: center;
   border-radius: 2rem 2rem 0 0;
   /* margin: 0 0 0 4rem; */
-  margin: 3rem auto 0 auto;
+  margin: 0 auto 0 auto;
   border: none;
+  font-weight: bold;
+  padding: 5rem;
 }
 
 .angle_explanation {
@@ -442,4 +453,54 @@ flex-direction: column;
   font-size: 2rem;
   font-family: "Orbitron", sans-serif;
   padding: 3rem 0 3rem 3rem;
+  display: flex;
+  font-size: 2.5rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.calculation_info {
+  color: #032CA6;
+  font-size: 2rem;
+  font-family: "Orbitron", sans-serif;
+  margin: 1rem 3rem 0 3rem;
+  /* line-height: 2; */
+  /* letter-spacing: normal; */
+}
+
+.calculation_info_user_location {
+  color: red;
+  font-size: 2rem;
+  font-family: "Orbitron", sans-serif;
+  margin: 0 3rem;
+  line-height: 2;
+}
+.calculation_info_user_date {
+  color: red;
+  font-size: 2rem;
+  font-family: "Orbitron", sans-serif;
+  margin: 0 3rem;
+  line-height: 2;
+}
+
+.calculation_info_label {
+  color: #032CA6;
+  font-size: 2rem;
+  font-family: "Orbitron", sans-serif;
+  margin: 3rem 3rem 0 3rem;
+}
+
+.open_tab {
+width: 2.5rem;
+margin: 0 0 0 1.5rem;
+}
+
+.update {
+  width: 3rem;
+  margin: 0 0 0 1.5rem;
+  transition: transform 1.2s;
+}
+
+.update.rotated { 
+  transform: rotate(360deg);
 }

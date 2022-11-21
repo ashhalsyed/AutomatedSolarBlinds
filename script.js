@@ -3,6 +3,16 @@ function updateSliderAndDisplay() {
     document.getElementById("amount").value += "°";
     document.getElementById("on_btn").style.border = "none";
     document.getElementById("off_btn").style.border = "none";
+    // BACKEND STARTS HERE
+
+    let currentAngle = Number(document.getElementById("rangeInput").value);
+    //variable which holds the current angle value as a number
+
+    console.log(currentAngle);
+    //prints the current angle in the console for now
+
+    // BACKEND ENDS HERE
+
 }
 
 function openNav() {
@@ -18,17 +28,21 @@ function closed() {
     document.getElementById("rangeInput").value = 0;
     document.getElementById("off_btn").style.border = "0.25rem solid #95ACBF";
     document.getElementById("on_btn").style.border = "none";
+
+    let currentAngle = 0;
+    console.log(currentAngle);
 }
 function opened() {
     document.getElementById("amount").value = "90°";
     document.getElementById("rangeInput").value = 90;
     document.getElementById("on_btn").style.border = "0.25rem solid #95ACBF";
     document.getElementById("off_btn").style.border = "none";
+
+    let currentAngle = 90;
+    console.log(currentAngle);
 }
 
 function toggleTheme() {
-    var theme = window.localStorage.getItem('data-theme');
-
     const element = document.querySelector('.toggle_holder');
     const style = getComputedStyle(element);
     const pos = style.justifyContent;
@@ -47,31 +61,18 @@ function toggleTheme() {
 }
 
 function setTheme() {
-    var theme = window.localStorage.getItem('data-theme');
+    let theme = window.localStorage.getItem('data-theme');
     document.body.style.backgroundColor = theme;
 }
 
 function updateSettings() {
-    var theme = window.localStorage.getItem('data-theme');
+    let theme = window.localStorage.getItem('data-theme');
 
     if (theme == "#121212") {
         document.getElementById("toggle_holder").style.justifyContent = "end";
         document.getElementById("toggle_holder").style.backgroundColor = "#032CA6";
     }
 }
-
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-
-    } else {
-        alert("Geolocation is not supported by this browser")
-    }
-}
-
-// function showPosition(position) {
-//     document.getElementById("latitude").innerHTML = "Latitude: " + position.coords.latitude;
-// }
 
 function calculateAngle() {
 
@@ -111,12 +112,9 @@ function showAngle(position) {
 }
 
 function showCalculation() {
-    // alert("hello");
 
-    var content = document.getElementById("show_calculation");
-    var showButton = document.getElementById("show_calculation_button");
-
-    console.log(content.style.display);
+    let content = document.getElementById("show_calculation");
+    let showButton = document.getElementById("show_calculation_button");
 
     if (content.style.display === "none" || content.style.display === "") {
         content.style.display = "flex";
@@ -129,4 +127,140 @@ function showCalculation() {
     }
 
     content.scrollIntoView();
+}
+
+function updateAngle() {
+
+
+    document.getElementById("update").style.transition = "transform 1.2s";
+    document.getElementById("update").className = 'update rotated';
+    window.setTimeout(function () {
+        document.getElementById("update").style.transition = "none";
+        document.getElementById("update").className = 'update';
+    }, 1200);
+
+
+    navigator.permissions.query({ name: 'geolocation' }).then((result) => {
+        if (result.state === 'denied') {
+            alert("Location access was declined. Turn on location to use this feature");
+        }
+    });
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(logPos)
+    }
+    else {
+        alert("Geolocation is not supported by this browser")
+    }
+
+    function logPos(pos) {
+
+        const d = new Date();
+
+        let currentMonth = d.getMonth() + 1;
+        let optimalAngle;
+        let hemisphere = pos.coords.latitude >= 0 ? "northern" : "southern";
+        let springAndAutumnAngle = pos.coords.latitude - 2.5;
+        let summerAngle = pos.coords.latitude * 0.9 - 23.5;
+        let winterAngle = pos.coords.latitude * 0.9 + 29;
+
+
+        //indexes at 0
+        if (hemisphere == "northern") {
+            switch (currentMonth) {
+                case 12:
+                    optimalAngle = winterAngle + ((springAndAutumnAngle - winterAngle) / 3);
+                    break;
+                case 1:
+                    optimalAngle = winterAngle + 2 * ((springAndAutumnAngle - winterAngle) / 3);
+                    break;
+                case 2:
+                    optimalAngle = springAndAutumnAngle;
+                    //spring
+                    break;
+                case 3:
+                    optimalAngle = springAndAutumnAngle + ((summerAngle - springAndAutumnAngle) / 3);
+                    break;
+                case 4:
+                    optimalAngle = springAndAutumnAngle + 2 * ((summerAngle - springAndAutumnAngle) / 3)
+                    break;
+                case 5:
+                    optimalAngle = summerAngle;
+                    //summer
+                    break;
+                case 6:
+                    optimalAngle = summerAngle + ((springAndAutumnAngle - summerAngle) / 3);
+                    break;
+                case 7:
+                    optimalAngle = summerAngle + 2 * ((springAndAutumnAngle - summerAngle) / 3);
+                    break;
+                case 8:
+                    optimalAngle = springAndAutumnAngle;
+                    //autumn
+                    break;
+                case 9:
+                    optimalAngle = springAndAutumnAngle + ((winterAngle - springAndAutumnAngle) / 3);
+                    break;
+                case 10:
+                    optimalAngle = springAndAutumnAngle + 2 * ((winterAngle - springAndAutumnAngle) / 3);
+                    break;
+                case 11:
+                    optimalAngle = winterAngle;
+                    //winter
+                    break;
+            }
+        }
+        else {
+            switch (currentMonth) {
+                case 12:
+                    optimalAngle = summerAngle + ((springAndAutumnAngle - summerAngle) / 3);
+                    break;
+                case 1:
+                    optimalAngle = summerAngle + 2 * ((springAndAutumnAngle - summerAngle) / 3);
+                    break;
+                case 2:
+                    optimalAngle = springAndAutumnAngle;
+                    //autumn
+                    break;
+                case 3:
+                    optimalAngle = springAndAutumnAngle + ((winterAngle - springAndAutumnAngle) / 3);
+                    break;
+                case 4:
+                    optimalAngle = springAndAutumnAngle + 2 * ((winterAngle - springAndAutumnAngle) / 3);
+                    break;
+                case 5:
+                    optimalAngle = winterAngle;
+                    //winter
+                    break;
+                case 6:
+                    optimalAngle = winterAngle + ((springAndAutumnAngle - winterAngle) / 3);
+                    break;
+                case 7:
+                    optimalAngle = winterAngle + 2 * ((springAndAutumnAngle - winterAngle) / 3);
+                    break;
+                case 8:
+                    optimalAngle = springAndAutumnAngle;
+                    //spring
+                    break;
+                case 9:
+                    optimalAngle = springAndAutumnAngle + ((summerAngle - springAndAutumnAngle) / 3);
+                    break;
+                case 10:
+                    optimalAngle = springAndAutumnAngle + 2 * ((summerAngle - springAndAutumnAngle) / 3);
+                    break;
+                case 11:
+                    optimalAngle = summerAngle;
+                    //summer
+                    break;
+            }
+        }
+
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        console.log(Math.round(optimalAngle));
+        document.getElementById("optimal_angle_result_label").innerHTML = Math.round(optimalAngle) + "°";
+        document.getElementById("calculation_info_user_date").innerHTML = monthNames[d.getMonth()] + ",  " + d.getDate() + ",  " + d.getFullYear();
+        document.getElementById("calculation_info_user_location").innerHTML = pos.coords.latitude;
+    }
 }
