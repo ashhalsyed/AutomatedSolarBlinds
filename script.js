@@ -147,13 +147,13 @@ function updateAngle() {
     });
 
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(logPos)
+        navigator.geolocation.getCurrentPosition(calcAngle)
     }
     else {
         alert("Geolocation is not supported by this browser")
     }
 
-    function logPos(pos) {
+    function calcAngle(pos) {
 
         const d = new Date();
 
