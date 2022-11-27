@@ -1,4 +1,5 @@
 # AutomatedSolarBlinds
-front end for web app
+Automated Solar Blinds App
 
-https://ashhalsyed.github.io/AutomatedSolarBlinds/
+
+Visit the site at [ashhalsyed.github.io/AutomatedSolarBlinds](https://ashhalsyed.github.io/AutomatedSolarBlinds/)
