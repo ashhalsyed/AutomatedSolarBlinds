@@ -72,6 +72,11 @@ function updateMode(mode) {
         document.getElementById("charging_content").style.display = "flex";
         document.getElementById("settings_content").style.display = "none";
         //sets display depending on mode
+        
+        if (window.localStorage.getItem("chargingAngle")) {
+            updateAngle();
+        }
+        //update angle automatically if user has already done it once before
     }
     else if (mode == "settings") {
         window.localStorage.setItem("mode", "settings")
