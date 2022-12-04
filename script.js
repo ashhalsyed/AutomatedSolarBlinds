@@ -1,11 +1,15 @@
 function connectToBackend() {
-    //called every time the user changes the angle
+    // called every time the user changes the angle
 
     let currentAngle = window.localStorage.getItem("angle")
-    //saves current angle in a variable
+    // saves current angle in a variable
 
     console.log(Number(currentAngle));
-    //prints the current angle in the console for now (F12 -> Console)
+    // prints the current angle in the console for now (F12 -> Console)
+
+    // toggleConnection()
+    // call function to toggle between connected and disconnected modes
+    // only called when indicator is clicked for now
 
 }
 
@@ -13,8 +17,14 @@ function connectToBackend() {
 let appLightBlue = "#D5E7F2";
 let appDarkBlue = "#032CA6";
 let appGrey = "#95ACBF";
+let updateIconAngle = 0
 
 function onLoadApp() {
+
+    checkForUpdates()
+    updateDeviceConnection()
+    updateTheme();
+
     let currentMode = window.localStorage.getItem("mode")
 
     if (currentMode == null) {
@@ -22,9 +32,55 @@ function onLoadApp() {
         currentMode = "smart"
     }
 
-    updateTheme();
     updateMode(currentMode);
     updateSmartModeAngle();
+}
+
+function toggleConnection() {
+    let connected = window.localStorage.getItem("connected");
+
+    if (connected == "true") {
+        window.localStorage.setItem("connected", "false");
+
+    }
+    else if (connected == "false") {
+        window.localStorage.setItem("connected", "true");
+    }
+
+    updateDeviceConnection()
+}
+
+function updateDeviceConnection() {
+    let connected = window.localStorage.getItem("connected");
+
+    if (connected == null) {
+        window.localStorage.setItem("connected", "false");
+        connected = "false";
+    }
+
+    if (connected == "true") {
+        for (const element of document.getElementsByClassName("connected_icon")) {
+            element.classList.add("connected")
+        }
+    }
+    else if (connected == "false") {
+        for (const element of document.getElementsByClassName("connected_icon")) {
+            element.classList.remove("connected")
+        }
+    }
+
+}
+
+function checkForUpdates() {
+    let latestVersion = "2.10"
+    let currentVersion = window.localStorage.getItem("version")
+
+    if (currentVersion == null || currentVersion != latestVersion) {
+        window.localStorage.clear()
+        window.localStorage.setItem("version", latestVersion)
+    }
+
+    document.getElementById("setting_text version").innerHTML = latestVersion
 }
 
 function updateMode(mode) {
@@ -32,75 +88,60 @@ function updateMode(mode) {
     if (mode == "smart") {
         window.localStorage.setItem("mode", "smart")
 
-        document.getElementById("navbar_icon smart").style.fill = appDarkBlue;
-        document.getElementById("navbar_icon_label smart").style.color = appDarkBlue;
-        document.getElementById("navbar_icon_label smart").style.fontWeight = "bold";
+        document.getElementById("navbar_icon smart").classList.add("selected")
+        document.getElementById("navbar_icon_label smart").classList.add("selected")
+        document.getElementById("navbar_icon charging").classList.remove("selected")
+        document.getElementById("navbar_icon_label charging").classList.remove("selected")
+        document.getElementById("navbar_icon settings").classList.remove("selected")
+        document.getElementById("navbar_icon_label settings").classList.remove("selected")
         //highlight icon with color
 
-        document.getElementById("navbar_icon charging").style.fill = "black";
-        document.getElementById("navbar_icon_label charging").style.color = "black";
-        document.getElementById("navbar_icon_label charging").style.fontWeight = "normal";
-        document.getElementById("navbar_icon settings").style.fill = "black";
-        document.getElementById("navbar_icon_label settings").style.color = "black";
-        document.getElementById("navbar_icon_label settings").style.fontWeight = "normal";
-        //reset other colors
-
-        document.getElementById("smart_content").style.display = "flex";
-        document.getElementById("charging_content").style.display = "none";
-        document.getElementById("settings_content").style.display = "none";
+        document.getElementById("smart_content").classList.add("displayed")
+        document.getElementById("charging_content").classList.remove("displayed")
+        document.getElementById("settings_content").classList.remove("displayed")
         //sets display depending on mode
 
     }
     else if (mode == "charging") {
         window.localStorage.setItem("mode", "charging")
 
+        document.getElementById("navbar_icon smart").classList.remove("selected")
+        document.getElementById("navbar_icon_label smart").classList.remove("selected")
+        document.getElementById("navbar_icon charging").classList.add("selected")
+        document.getElementById("navbar_icon_label charging").classList.add("selected")
+        document.getElementById("navbar_icon settings").classList.remove("selected")
+        document.getElementById("navbar_icon_label settings").classList.remove("selected")
+        // //highlight icon with color
 
-        document.getElementById("navbar_icon charging").style.fill = appDarkBlue;
-        document.getElementById("navbar_icon_label charging").style.color = appDarkBlue;
-        document.getElementById("navbar_icon_label charging").style.fontWeight = "bold";
-        //highlight icon with color
-
-        document.getElementById("navbar_icon smart").style.fill = "black";
-        document.getElementById("navbar_icon_label smart").style.color = "black";
-        document.getElementById("navbar_icon_label smart").style.fontWeight = "normal";
-        document.getElementById("navbar_icon settings").style.fill = "black";
-        document.getElementById("navbar_icon_label settings").style.color = "black";
-        document.getElementById("navbar_icon_label settings").style.fontWeight = "normal";
-        //reset other colors
-
-        document.getElementById("smart_content").style.display = "none";
-        document.getElementById("charging_content").style.display = "flex";
-        document.getElementById("settings_content").style.display = "none";
+        document.getElementById("smart_content").classList.remove("displayed")
+        document.getElementById("charging_content").classList.add("displayed")
+        document.getElementById("settings_content").classList.remove("displayed")
         //sets display depending on mode
-        
+
         if (window.localStorage.getItem("chargingAngle")) {
             updateAngle();
         }
-        //update angle automatically if user has already done it once before
     }
     else if (mode == "settings") {
         window.localStorage.setItem("mode", "settings")
 
+        document.getElementById("navbar_icon smart").classList.remove("selected")
+        document.getElementById("navbar_icon_label smart").classList.remove("selected")
+        document.getElementById("navbar_icon charging").classList.remove("selected")
+        document.getElementById("navbar_icon_label charging").classList.remove("selected")
+        document.getElementById("navbar_icon settings").classList.add("selected")
+        document.getElementById("navbar_icon_label settings").classList.add("selected")
+        // //highlight icon with color
 
-        document.getElementById("navbar_icon settings").style.fill = appDarkBlue;
-        document.getElementById("navbar_icon_label settings").style.color = appDarkBlue;
-        document.getElementById("navbar_icon_label settings").style.fontWeight = "bold";
-        //highlight icon with color
 
-        document.getElementById("navbar_icon smart").style.fill = "black";
-        document.getElementById("navbar_icon_label smart").style.color = "black";
-        document.getElementById("navbar_icon_label smart").style.fontWeight = "normal";
-        document.getElementById("navbar_icon charging").style.fill = "black";
-        document.getElementById("navbar_icon_label charging").style.color = "black";
-        document.getElementById("navbar_icon_label charging").style.fontWeight = "normal";
-        //reset other colors
 
-        document.getElementById("smart_content").style.display = "none";
-        document.getElementById("charging_content").style.display = "none";
-        document.getElementById("settings_content").style.display = "flex";
+        document.getElementById("smart_content").classList.remove("displayed")
+        document.getElementById("charging_content").classList.remove("displayed")
+        document.getElementById("settings_content").classList.add("displayed")
         //sets display depending on mode
 
     }
+
 }
 
 function updateSmartModeAngle() {
@@ -108,19 +149,21 @@ function updateSmartModeAngle() {
 
     if (currentAngle == null) {
         window.localStorage.setItem("angle", "0")
+        document.getElementById("angle_value").innerHTML = "0°";
+        currentAngle = "0"
     }
-    else {
-        document.getElementById("rangeInput").value = currentAngle;
-        document.getElementById("amount").value = currentAngle;
-        document.getElementById("amount").value += "°";
 
-        if (currentAngle == "0") {
-            fakeToggleBlinds("closed")
-        }
-        else if (currentAngle == "90") {
-            fakeToggleBlinds("open")
-        }
+    document.getElementById("rangeInput").value = currentAngle;
+    document.getElementById("angle_value").innerHTML = currentAngle;
+    document.getElementById("angle_value").innerHTML += "°";
 
+    if (currentAngle == "0") {
+        document.getElementById("control_button open").classList.remove("selected")
+        document.getElementById("control_button closed").classList.add("selected")
+    }
+    else if (currentAngle == "90") {
+        document.getElementById("control_button open").classList.add("selected")
+        document.getElementById("control_button closed").classList.remove("selected")
     }
 }
 
@@ -130,12 +173,11 @@ function updateSliderAndDisplay() {
     window.localStorage.setItem("angle", currentAngle);
 
 
-    document.getElementById("amount").value = currentAngle;
-    document.getElementById("amount").value += "°";
-    document.getElementById("control_button open").style.backgroundColor = appDarkBlue;
-    document.getElementById("control_button open").style.color = "white";
-    document.getElementById("control_button closed").style.backgroundColor = appDarkBlue;
-    document.getElementById("control_button closed").style.color = "white";
+    document.getElementById("angle_value").innerHTML = currentAngle;
+    document.getElementById("angle_value").innerHTML += "°";
+
+    document.getElementById("control_button open").classList.remove("selected")
+    document.getElementById("control_button closed").classList.remove("selected")
 
     if (currentAngle == "0") {
         toggleBlinds("closed")
@@ -148,47 +190,22 @@ function updateSliderAndDisplay() {
     }
 }
 
-function fakeToggleBlinds(currentState) {
-    if (currentState == "closed") {
-        document.getElementById("amount").value = "0°";
-        document.getElementById("rangeInput").value = 0;
-        document.getElementById("control_button open").style.backgroundColor = appDarkBlue;
-        document.getElementById("control_button open").style.color = "white";
-        document.getElementById("control_button closed").style.backgroundColor = appLightBlue;
-        document.getElementById("control_button closed").style.color = appDarkBlue;
-
-        window.localStorage.setItem("angle", "0");
-    }
-    else if (currentState == "open") {
-        document.getElementById("amount").value = "90°";
-        document.getElementById("rangeInput").value = 90;
-        document.getElementById("control_button open").style.backgroundColor = appLightBlue;
-        document.getElementById("control_button open").style.color = appDarkBlue;
-        document.getElementById("control_button closed").style.backgroundColor = appDarkBlue;
-        document.getElementById("control_button closed").style.color = "white";
-
-        window.localStorage.setItem("angle", "90");
-    }
-}
 
 function toggleBlinds(currentState) {
     if (currentState == "closed") {
-        document.getElementById("amount").value = "0°";
+        document.getElementById("angle_value").innerHTML = "0°";
         document.getElementById("rangeInput").value = 0;
-        document.getElementById("control_button open").style.backgroundColor = appDarkBlue;
-        document.getElementById("control_button open").style.color = "white";
-        document.getElementById("control_button closed").style.backgroundColor = appLightBlue;
-        document.getElementById("control_button closed").style.color = appDarkBlue;
+        document.getElementById("control_button open").classList.remove("selected")
+        document.getElementById("control_button closed").classList.add("selected")
 
         window.localStorage.setItem("angle", "0");
     }
     else if (currentState == "open") {
-        document.getElementById("amount").value = "90°";
+        document.getElementById("angle_value").innerHTML = "90°";
         document.getElementById("rangeInput").value = 90;
-        document.getElementById("control_button open").style.backgroundColor = appLightBlue;
-        document.getElementById("control_button open").style.color = appDarkBlue;
-        document.getElementById("control_button closed").style.backgroundColor = appDarkBlue;
-        document.getElementById("control_button closed").style.color = "white";
+
+        document.getElementById("control_button open").classList.add("selected")
+        document.getElementById("control_button closed").classList.remove("selected")
 
         window.localStorage.setItem("angle", "90");
     }
@@ -198,68 +215,71 @@ function toggleBlinds(currentState) {
 function toggleTheme() {
     let theme = window.localStorage.getItem("theme");
 
-    if (theme == "white") {
-        window.localStorage.setItem("theme", "black");
+    if (theme == "user") {
+        window.localStorage.setItem("theme", "light");
+
     }
-    else if (theme == "black") {
-        window.localStorage.setItem("theme", "white");
+    else if (theme == "light") {
+        window.localStorage.setItem("theme", "dark");
+
+    } else if (theme == "dark") {
+        window.localStorage.setItem("theme", "user");
     }
 
     updateTheme();
+}
+
+function setLightTheme() {
+    for (const element of document.querySelectorAll('body, body *')) {
+        element.classList.remove("dark")
+    }
+}
+
+function setDarkTheme() {
+    for (const element of document.querySelectorAll('body, body *')) {
+        element.classList.add("dark")
+    }
 }
 
 function updateTheme() {
     let theme = window.localStorage.getItem("theme");
 
     if (theme == null) {
-        window.localStorage.setItem("theme", "white");
-        theme = "white";
+        window.localStorage.setItem("theme", "user");
+        theme = "user";
+        //default theme
     }
 
-    if (theme == "white") {
-        document.getElementById("toggle_holder").style.justifyContent = "start";
-        document.getElementById("toggle_holder").style.backgroundColor = appGrey;
-        document.getElementById("navbar").style.backgroundColor = "white";
-
-
+    if (theme == "user") {
+        document.getElementById("setting_text theme").innerHTML = "System Theme"
+        const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+        if (darkThemeMq.matches) {
+            setDarkTheme()
+        }
+        else {
+            setLightTheme()
+        }
     }
-    else if (theme == "black") {
-        document.getElementById("toggle_holder").style.justifyContent = "end";
-        document.getElementById("toggle_holder").style.backgroundColor = appDarkBlue;
-        document.getElementById("navbar").style.backgroundColor = appLightBlue;
+    else if (theme == "light") {
+        document.getElementById("setting_text theme").innerHTML = "Light"
+        setLightTheme()
     }
-    document.body.style.backgroundColor = theme;
+    else if (theme == "dark") {
+        document.getElementById("setting_text theme").innerHTML = "Dark"
+        setDarkTheme()
+    }
 }
 
 function showCalculation() {
-
-    let content = document.getElementById("show_calculation");
-    let showButton = document.getElementById("show_calculation_button");
-
-    if (content.style.display == "none" || content.style.display == "") {
-        content.style.display = "flex";
-        showButton.style.backgroundColor = appLightBlue
-        showButton.style.color = appDarkBlue
-        content.scrollIntoView();
-    } else {
-        content.style.display = "none";
-        showButton.style.backgroundColor = appDarkBlue
-        showButton.style.color = "white"
-        document.getElementById("charging_content").scrollTop = 0;
-    }
-
-
+    document.getElementById("show_calculation_button").classList.toggle("displayed")
+    document.getElementById("show_calculation").classList.toggle("displayed")
+    document.getElementById("show_calculation").scrollIntoView();
 }
 
 function updateAngle() {
 
-    document.getElementById("update").style.transition = "transform 1.2s";
-    document.getElementById("update").className.baseVal = 'update rotated';
-    window.setTimeout(function () {
-        document.getElementById("update").style.transition = "none";
-        document.getElementById("update").className.baseVal = 'update';
-    }, 1200);
-
+    updateIconAngle += 360
+    document.getElementById("update").style.transform = "rotate(" + updateIconAngle + "deg)"
 
     navigator.permissions.query({ name: 'geolocation' }).then((result) => {
         if (result.state === 'denied') {
@@ -384,5 +404,16 @@ function updateAngle() {
         document.getElementById("calculation_info_user_location").innerHTML = pos.coords.latitude;
 
         window.localStorage.setItem("chargingAngle", optimalAngle)
+    }
+}
+
+function goToVersionInfo() {
+    window.open("https://github.com/ashhalsyed/AutomatedSolarBlinds", '_blank').focus();
+}
+
+function clearLocalStorage() {
+    if (confirm('This will clear all app data (theme, etc.)')) {
+        window.localStorage.clear();
+        window.location = window.location.origin;
     }
 }

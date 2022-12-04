@@ -3,22 +3,23 @@
   <head>
     <title>Automated Solar Blinds</title>
     <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+      name="description"
+      content="App used to control our Automated Solar Blinds"
     />
+    <meta name="theme-color" content="#d5e7f2" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Orbitron"
-      href="https://fonts.googleapis.com/css?family=Quicksand"
     />
   </head>
   <body onload="onLoadApp()">
     <div class="content charging" id="charging_content">
-      <div class="optimal_angle">
-        <p class="optimal_angle_result_label">Charging Angle</p>
-        <p id="optimal_angle_result" class="optimal_angle_result">?°</p>
+      <div class="angle" id="angle">
+        <p class="angle_title">Charging Angle</p>
+        <p class="angle_value" id="optimal_angle_result">?°</p>
       </div>
       <div class="all_charging_buttons">
         <button class="optimal_angle_button" onclick="updateAngle()">
@@ -66,8 +67,9 @@
             class="angle_source"
             target="_blank"
             rel="noopener noreferrer"
+            desciption=""
           >
-            Learn More
+            Solar Angle Calculation
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -83,16 +85,12 @@
       </div>
     </div>
     <div class="content smart" id="smart_content">
-      <div class="angle">
+      <div class="angle" id="angle">
         <p class="angle_title">Current Angle</p>
-        <input
-          class="angle_disp"
-          id="amount"
-          type="text"
-          value="0°"
-          min="0"
-          max="90"
-        />
+        <div class="connected_icon_holder" onclick="toggleConnection()">
+          <div class="connected_icon"></div>
+        </div>
+        <p class="angle_value" id="angle_value"></p>
       </div>
       <div class="all_input">
         <input
@@ -124,14 +122,15 @@
     </div>
     <div class="content settings" id="settings_content">
       <div class="setting theme" onclick="toggleTheme()">
-        <p class="setting_label">Dark Theme</p>
-        <div class="toggle_holder" id="toggle_holder">
-          <button class="toggle_circle" id="toggle_circle"></button>
-        </div>
+        <p class="setting_label">Theme</p>
+        <p class="setting_text" id="setting_text theme"></p>
       </div>
-      <div class="setting version">
+      <div class="setting version" onclick="goToVersionInfo()">
         <p class="setting_label">Version</p>
-        <p class="version_info">2.0</p>
+        <p class="setting_text" id="setting_text version">2.10</p>
+      </div>
+      <div class="setting clear" onclick="clearLocalStorage()">
+        <button class="setting_button">Clear Data</button>
       </div>
     </div>
     <div class="navbar" id="navbar">
