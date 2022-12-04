@@ -414,6 +414,6 @@ function goToVersionInfo() {
 function clearLocalStorage() {
     if (confirm('This will clear all app data (theme, etc.)')) {
         window.localStorage.clear();
-        window.location = window.location.origin;
+        window.location.reload();
     }
 }
