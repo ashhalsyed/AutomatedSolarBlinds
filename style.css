@@ -103,6 +103,7 @@ button {
   display: flex;
   position: absolute;
   align-self: flex-end;
+  cursor: pointer;
 }
 
 .connected_icon {
