@@ -50,7 +50,7 @@ void loop() {
         http.begin("https://automated-solar-blinds-default-rtdb.firebaseio.com/optimalAngle.json");  //Specify the URL
         http.addHeader("Content-Type", "application/json");
 
-        int optimalAngle=random(0,91);
+        int optimalAngle=calculateOptimalAngle();
         // random number from 0 to 90
         int httpOptimalAngleResponseCode = http.PUT(String(optimalAngle));
 
