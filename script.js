@@ -114,14 +114,22 @@ function toggleConnection() {
 
     }
     else if (connected == "false") {
-        window.localStorage.setItem("connected", "true");
-        setFirebaseMode(mode)
+        let pin = prompt("Please enter the pin")
 
-        if (mode == "smart") {
-            setFirebaseAngle()
-        }
-        else if ((mode == "charging" && chargingAngle != null)) {
-            setFirebaseAngleCharging(chargingAngle)
+        if (pin == 3883) {
+            window.localStorage.setItem("connected", "true");
+            setFirebaseMode(mode)
+    
+            if (mode == "smart") {
+                setFirebaseAngle()
+            }
+            else if ((mode == "charging" && chargingAngle != null)) {
+                setFirebaseAngleCharging(chargingAngle)
+            }
+                
+            }
+        else {
+            alert("Incorrect Pin")
         }
     }
 
