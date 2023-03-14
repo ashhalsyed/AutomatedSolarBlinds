@@ -113,6 +113,40 @@ button {
   transition: var(--transition_selected);
 }
 
+.battery_icon_holder {
+  /* margin: 1rem; */
+  display: flex;
+  position: absolute;
+  align-self: flex-end;
+  background: none;
+  margin: 0 3rem 0 0;
+}
+
+.battery_icon {
+  padding: 1rem;
+  width: 1.6rem;
+  fill: var(--app_dark_blue);
+  /* display: none; */
+  /* transition: var(--transition_selected);  */
+}
+
+#battery_25 {
+  display: none;
+}
+
+#battery_50 {
+  display: none;
+}
+#battery_75 {
+  display: block;
+}
+#battery_100 {
+  display: none;
+}
+#battery_0 {
+  display: none;
+}
+
 .connected_icon.dark {
   fill: black;
 }
@@ -122,6 +156,10 @@ button {
 }
 
 .connected_icon.dark.connected {
+  fill: var(--app_white);
+}
+
+.battery_icon.dark {
   fill: var(--app_white);
 }
 

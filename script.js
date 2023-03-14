@@ -102,6 +102,29 @@ function onLoadApp() {
     updateMode(currentMode);
 }
 
+function toggleBattery(currentBattery) {
+    if (currentBattery == 0) {
+        document.getElementById("battery_0").style.display = "none";
+        document.getElementById("battery_25").style.display = "block";
+    }
+    if (currentBattery == 25) {
+        document.getElementById("battery_25").style.display = "none";
+        document.getElementById("battery_50").style.display = "block";
+    }
+    if (currentBattery == 50) {
+        document.getElementById("battery_50").style.display = "none";
+        document.getElementById("battery_75").style.display = "block";
+    }
+    if (currentBattery == 75) {
+        document.getElementById("battery_75").style.display = "none";
+        document.getElementById("battery_100").style.display = "block";
+    }
+    if (currentBattery == 100) {
+        document.getElementById("battery_100").style.display = "none";
+        document.getElementById("battery_0").style.display = "block";
+    }
+}
+
 function toggleConnection() {
 
     let connected = window.localStorage.getItem("connected");
@@ -119,15 +142,15 @@ function toggleConnection() {
         if (pin == 3883) {
             window.localStorage.setItem("connected", "true");
             setFirebaseMode(mode)
-    
+
             if (mode == "smart") {
                 setFirebaseAngle()
             }
             else if ((mode == "charging" && chargingAngle != null)) {
                 setFirebaseAngleCharging(chargingAngle)
             }
-                
-            }
+
+        }
         else {
             alert("Incorrect Pin")
         }
