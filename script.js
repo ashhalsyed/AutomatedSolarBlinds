@@ -318,7 +318,7 @@ function updateChargingAngle() {
 
     if (!updatingAngle && connected == "true") {
         updatingAngle = true;
-        updateIconAngle += 360 * 10
+        updateIconAngle += 360 * 12
         document.getElementById("update").style.transform = "rotate(" + updateIconAngle + "deg)"
 
         setFirebaseChargingFlag()
@@ -328,7 +328,7 @@ function updateChargingAngle() {
         setTimeout(() => {
             getFirebaseChargingAngleWithDelay()
             updatingAngle = false;
-        }, 10000);
+        }, 12000);
     }
 
 
