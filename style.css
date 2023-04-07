@@ -381,7 +381,7 @@ button {
   width: 1.5rem;
   margin: 0 0 0 1rem;
   fill: var(--app_white);
-  transition: transform 10s linear;
+  transition: transform 12s linear;
 }
 
 .update.rotated {
