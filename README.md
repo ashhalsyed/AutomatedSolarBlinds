@@ -2,7 +2,7 @@
 
 Open the Web App: [ashhalsyed.github.io/AutomatedSolarBlinds](https://ashhalsyed.github.io/AutomatedSolarBlinds/)
 
-![Lumina Smart Blinds Logo](https://github.com/ashhalsyed/AutomatedSolarBlinds/assets/39984001/9bb6a801-f68c-4b72-ba5c-ad5d5ee1ccf5)
+![Lumina Smart Blinds Gif](https://github.com/ashhalsyed/AutomatedSolarBlinds/blob/master/assets/lumina%20clip.gif)
 
 
 
